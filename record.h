@@ -14,7 +14,7 @@ class Trecord {
 public:
     void addRecord();
     //void deleteRecord();
-    void showInfo();
+    const void showInfo();
 };
 
 

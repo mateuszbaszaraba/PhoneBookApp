@@ -4,17 +4,15 @@
 #include <iostream>
 #include "record.h"
 
-using namespace std;
-
 void Trecord::addRecord()
 {
-    cout << "Enter name: ";
-    cin >> name;
-    cout << "Enter number: ";
-    cin >> number;
+    std::cout << "Enter name: ";
+    std::cin >> name;
+    std::cout << "Enter number: ";
+    std::cin >> number;
 }
 
-void Trecord::showInfo()
+const void Trecord::showInfo()
 {
-    cout << "Name: " << name << " Number: " << number << endl;
+    std::cout << "Name: " << name << " Number: " << number << std::endl;
 }
