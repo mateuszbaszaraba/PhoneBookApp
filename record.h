@@ -13,7 +13,6 @@ class Trecord {
     int number;
 public:
     void addRecord();
-    //void deleteRecord();
     const void showInfo();
 };
 

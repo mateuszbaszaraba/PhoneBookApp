@@ -1,12 +1,19 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <algorithm>
 #include "record.h"
 
 void mainMenu(std::vector<Trecord> &phonebook);
 void addRecord(std::vector<Trecord> &phonebook);
 void showRecords(std::vector<Trecord> &phonebook);
 void deleteRecord(std::vector<Trecord> &phonebook);
+void searchRecord(std::vector<Trecord> &phonebook);
+
+void (*addR)(std::vector<Trecord> &) = addRecord;
+void (*showR)(std::vector<Trecord> &) = showRecords;
+void (*deleteR)(std::vector<Trecord> &) = deleteRecord;
+void (*searchR)(std::vector<Trecord> &) = searchRecord;
 
 std::vector<Trecord> recordBook;
 
@@ -23,6 +30,7 @@ int main() {
 
 void mainMenu(std::vector<Trecord> & phonebook)
 {
+
     std::cout << std::string(20, '=') << std::endl;
     std::cout << std::string(4, '*') << " PHONE BOOK " << std::string(4, '*') << std::endl;
     std::cout << std::string(20, '=') << std::endl;
@@ -32,13 +40,16 @@ void mainMenu(std::vector<Trecord> & phonebook)
     switch(choice)
     {
         case 1:
-            addRecord(phonebook);
+            addR(phonebook);
+            break;
+        case 2:
+            searchR(phonebook);
             break;
         case 3:
-            showRecords(phonebook);
+            showR(phonebook);
             break;
         case 4:
-            deleteRecord(phonebook);
+            deleteR(phonebook);
             break;
         case 5:
             exit(0);
@@ -67,9 +78,14 @@ void showRecords(std::vector<Trecord> &phonebook)
 
 void deleteRecord(std::vector<Trecord> &phonebook)
 {
-    showRecords(phonebook);
+    showR(phonebook);
     std::cout << "Which one? ";
     int n;
     std::cin >> n;
     phonebook.erase(phonebook.begin() + n);
+}
+
+void searchRecord(std::vector<Trecord> &phonebook)
+{
+
 }
